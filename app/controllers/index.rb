@@ -1,9 +1,11 @@
 get '/' do
+ p session[:errors]
   erb :index
 end
 
 post '/signup' do
-  @user = User.create(params[:user])
+  p params[:player]
+  @user = Player.create(params[:player])
   if session[:player1] == nil
     session[:player1] = @user.id
   elsif session[:player2] == nil
@@ -11,9 +13,17 @@ post '/signup' do
   else
     redirect '/'
   end
-  redirect '/game'
+  if session[:player2] == nil
+    redirect '/'
+  else
+    redirect '/game'
+  end
 end
 
+get '/clear_all' do
+  session.clear
+  redirect :'/'
+end
 
 get '/login' do
   erb :'auth/login'
@@ -24,24 +34,29 @@ get '/signup' do
 end
 
 post '/login' do
-  @user = User.find_by(name: params[:user][:name])
-
-  if @user.try(:authenticate, params[:user][:password])
-    if session[:player1] == nil
-      session[:player1] = @user.id
-    elsif session[:player2] == nil
-      session[:player2] = @user.id
+  p session
+  p params
+  if Player.find_by(name: params[:player][:name])
+    @user = Player.find_by(name: params[:player][:name])
+    if @user.try(:authenticate, params[:player][:password])
+      if session[:player1] == nil
+        session[:player1] = @user.id
+      else session[:player2] == nil
+        session[:player2] = @user.id
+        redirect '/game'
+      end
     else
-      redirect '/'
+      redirect '/login'
     end
-  else
-    redirect '/login'
+    redirect '/signup'
   end
-  redirect '/game'
+  redirect '/'
 end
 
 get '/game' do
-
+  unless session[:game]
+    Card.deal(Player.find(session[:player1]).cards, Player.find(session[:player2]).cards)
+  end
   erb :'game/show'
 end
 

@@ -1,9 +1,10 @@
 class Card < ActiveRecord::Base
   belongs_to :player_card
 
-def self.deal(player1, player2)
 
-    deck = Card.all
+  def self.deal(player1, player2)
+    deck = Card.all.shuffle
+
     deck.each_with_index do |card, index|
       if index.odd?
         player1 << card
@@ -12,4 +13,5 @@ def self.deal(player1, player2)
       end
     end
   end
+
 end
