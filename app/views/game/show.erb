@@ -1,0 +1,9 @@
+<% @player1 = Player.find(session[:player1]) %>
+<% @player2 = Player.find(session[:player2]) %>
+
+<div id="game_container">
+  <%= @player1.deck.first %>
+  <%= @player2.deck.first %>
+</div>
+
+
