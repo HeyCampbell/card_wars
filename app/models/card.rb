@@ -1,8 +1,5 @@
 class Card < ActiveRecord::Base
-  belongs_to :player
-end
+has_many :player_cards
+has_many :players, through: :player_cards
 
-def self.deal
-    #shuffle -- array of shuffled cards
-    #
 end
