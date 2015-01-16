@@ -10,8 +10,7 @@ class Player < ActiveRecord::Base
   #     PlayerCard.update(user_id: player2)
   # end
 
-before_create do
-  @hand = []
+
 end
   def self.score!(card1, card2)
     losing_card = compare_cards(card1, card2)

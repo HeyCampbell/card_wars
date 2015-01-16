@@ -10,8 +10,6 @@ post '/signup' do
     session[:player1] = @user.id
   elsif session[:player2] == nil
     session[:player2] = @user.id
-  else
-    redirect '/'
   end
   if session[:player2] == nil
     redirect '/'
@@ -55,9 +53,13 @@ end
 
 get '/game' do
   unless session[:game]
-    Card.deal(Player.find(session[:player1]).cards, Player.find(session[:player2]).cards)
+    Card.deal
   end
+  unless session[:winner]
   erb :'game/show'
+  else
+    erb :'game/winner'
+  end
 end
 
 post '/game' do
