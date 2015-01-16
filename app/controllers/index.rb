@@ -1,5 +1,5 @@
 get '/' do
-
+ p session[:errors]
   erb :index
 end
 
@@ -35,29 +35,28 @@ end
 
 post '/login' do
   p session
-  @user = Player.find_by(name: params[:user][:name])
-
-  if @user.try(:authenticate, params[:user][:password])
-    if session[:player1] == nil
-      session[:player1] = @user.id
-    elsif session[:player2] == nil
-      session[:player2] = @user.id
+  p params
+  if Player.find_by(name: params[:player][:name])
+    @user = Player.find_by(name: params[:player][:name])
+    if @user.try(:authenticate, params[:player][:password])
+      if session[:player1] == nil
+        session[:player1] = @user.id
+      else session[:player2] == nil
+        session[:player2] = @user.id
+        redirect '/game'
+      end
     else
-      redirect '/'
+      redirect '/login'
     end
-  else
-    redirect '/'
+    redirect '/signup'
   end
-  if session[:player2] == nil
-    redirect '/'
-  else
-    redirect '/game'
-  end
-  redirect '/game'
+  redirect '/'
 end
 
 get '/game' do
-
+  unless session[:game]
+    Card.deal(Player.find(session[:player1]).cards, Player.find(session[:player2]).cards)
+  end
   erb :'game/show'
 end
 
