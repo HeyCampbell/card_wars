@@ -1,9 +1,29 @@
-<% @player1 = Player.find(session[:player1]) %>
-<% @player2 = Player.find(session[:player2]) %>
+
 
 <div id="game_container">
-  <%= @player1.deck.first %>
-  <%= @player2.deck.first %>
+  <div id="left_score">
+    play 1 scores
+  </div>
+
+  <div id="left_card">
+    player1 show card
+  </div>
+
+  <div id="right_card">
+     player2 show card
+  </div>
+
+  <div id="right_score">
+    play 2 scores
+  </div>
+
+  <div id="flip_button">
+    <form action="/game" method="POST">
+
+    <button type="submit" name="Battle!">Battle!</button>
+    </form>
+
+
 </div>
 
 

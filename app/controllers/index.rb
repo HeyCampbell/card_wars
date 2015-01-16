@@ -16,9 +16,12 @@ end
 
 
 get '/login' do
-  erb :login
+  erb :'auth/login'
 end
 
+get '/signup' do
+  erb :'auth/signup'
+end
 
 post '/login' do
   @user = User.find_by(name: params[:user][:name])
@@ -39,5 +42,14 @@ end
 
 get '/game' do
 
-  erb :show
+  erb :'game/show'
 end
+
+post '/game' do
+
+  redirect '/game'
+end
+
+
+
+
