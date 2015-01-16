@@ -2,7 +2,7 @@
 
 <div id="game_container">
   <div id="left_score">
-    play 1 scores
+    <%= Player.find(session[:player1]).name %> scores
   </div>
 
   <div id="left_card">
@@ -14,7 +14,7 @@
   </div>
 
   <div id="right_score">
-    play 2 scores
+    <%= Player.find(session[:player2]).name %> scores
   </div>
 
   <div id="flip_button">
