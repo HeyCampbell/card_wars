@@ -11,8 +11,8 @@ Card.create(value: 9, name: "Nine")
 Card.create(value: 10, name: "Ten")
 Card.create(value: 11, name: "Jack")
 Card.create(value: 12, name: "Queen")
-Card.create(value: 13, name: "Kevin")
+Card.create(value: 13, name: "King")
+Card.create(value: 14, name: "Ace")
 end
-
-Player.create(name: "Darrin")
-Player.create(name: "Kevin")
+d = Player.create(name: "Darrin")
+k = Player.create(name: "Kevin")
