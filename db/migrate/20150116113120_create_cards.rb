@@ -1,8 +1,9 @@
 class CreateCards < ActiveRecord::Migration
   def change
-    create_table do |t|
+    create_table :cards do |t|
       t.string :name
       t.integer :value
-      t.refereces :player
+      t.references :player
+    end
   end
 end
