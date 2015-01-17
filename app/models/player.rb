@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   has_many :cards, through: :player_cards
   has_secure_password
 
+  validates :name, uniqueness: true
 
   # def self.score!(player1, player2)
   #   losing_card = compare_cards(player1.cards.first, player2.cards.first)
@@ -10,9 +11,8 @@ class Player < ActiveRecord::Base
   #     PlayerCard.update(user_id: player2)
   # end
 
-before_create do
-  @hand = []
-end
+
+# end
   def self.score!(card1, card2)
     losing_card = compare_cards(card1, card2)
 
