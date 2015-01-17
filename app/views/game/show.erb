@@ -1,10 +1,11 @@
-<% session[:game] = true %>
+
 <% player1 = Player.find(session[:player1]) %>
 <% player2 = Player.find(session[:player2]) %>
 
 <div id="game_container">
   <div id="left_score">
-    <%= player1.name %> scores
+    <h2><%= player1.name %></h2>
+    <h3>Score: <%= player1.cards.count %> </h3>
   </div>
 
   <div id="left_card">
@@ -16,7 +17,8 @@
   </div>
 
   <div id="right_score">
-    <%= player2.name %> scores
+    <h2><%= player2.name %></h2>
+    <h3>Score: <%= player2.cards.count %> </h3>
   </div>
 
   <div id="flip_button">
