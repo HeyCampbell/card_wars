@@ -5,7 +5,7 @@ end
 post '/login' do
   player = Player.find_by(name: params[:player][:name])
     if player.try(:authenticate, params[:player][:password])
-      session[:player_id] = .id
+      session[:player_id] = player.id
       redirect '/game'
     else
       redirect '/login'
@@ -29,7 +29,7 @@ post '/signup' do
   #   redirect '/game'
   # end
   if @user.save
-    session[:player_id] = player.id
+    session[:player_id] = @user.id
     redirect "/"
   else
     redirect "/signup"
