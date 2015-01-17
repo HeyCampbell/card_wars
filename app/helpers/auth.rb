@@ -1,14 +1,9 @@
 def current_user
-  if session[:user_id]
-    return User.find(session[:user_id])
+  if session[:player_id]
+    return Player.find(session[:player_id])
   else
     return nil
   end
 end
 
 
-
-
-
-# remove cards method
-# add cards method

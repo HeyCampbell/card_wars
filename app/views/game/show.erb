@@ -1,7 +1,7 @@
 
   <% session[:game] = true %>
   <% player1 = Player.find(session[:player1]) %>
-  <% player2 = Player.find(session[:player2]) %>
+
 <div id="game_container">
   <div id="left_score">
     <%= player1.name %> scores

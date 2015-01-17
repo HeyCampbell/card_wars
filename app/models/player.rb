@@ -11,7 +11,7 @@ class Player < ActiveRecord::Base
   # end
 
 
-end
+# end
   def self.score!(card1, card2)
     losing_card = compare_cards(card1, card2)
 
