@@ -12,6 +12,10 @@ end
 
 
 
-
+post '/signout' do
+  session[:player1] = nil
+  session[:player2] = nil
+  redirect ("/")
+end
 
 
