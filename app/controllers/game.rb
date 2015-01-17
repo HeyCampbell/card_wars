@@ -1,9 +1,11 @@
 get '/game' do
   unless session[:game]
     Card.deal
-    @player = current_user
-    erb :'game/show'
   end
+
+
+  @player = current_user
+  erb :'game/show'
 end
 
 post '/game' do
