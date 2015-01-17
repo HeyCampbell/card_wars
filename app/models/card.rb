@@ -1,20 +1,17 @@
 class Card < ActiveRecord::Base
   belongs_to :player_card
 
-  def self.deal
-    deck_indices = (0..Card.all.count).to_a
+def self.deal
     hand1 = []
     hand2 = []
-    until deck_indices.length == 0
 
-      hand1 << deck_indices.shuffle.pop
-      hand2 << deck_indices.shuffle.pop
+    self.all.each_with_index do |card, index|
+      if index.even?
+        hand1.push(card)
+      else
+        hand2.push(card)
+      end
     end
-    session[:hand1] = hand1
-    session[:hand2] = hand2
+    hands ={player_hand: hand1, computer_hand: hand2}
   end
-
-
-
-
 end

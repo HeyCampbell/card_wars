@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   has_many :cards, through: :player_cards
   has_secure_password
 
+  validates :name, uniqueness: true
 
   # def self.score!(player1, player2)
   #   losing_card = compare_cards(player1.cards.first, player2.cards.first)
@@ -12,26 +13,21 @@ class Player < ActiveRecord::Base
 
 
 # end
-
   def self.score!(card1, card2)
     losing_card = compare_cards(card1, card2)
 
+    losing_player_card = PlayerCard.find_by(card_id: losing_card.id)
+    loser_id = losing_player_card.player_id
 
-  # def self.score!(card1, card2)
-  #   losing_card = compare_cards(card1, card2)
+    if loser_id == 1
 
-  #   losing_player_card = PlayerCard.find_by(card_id: losing_card.id)
-  #   loser_id = losing_player_card.player_id
+      losing_player_card.update(player_id: 2)
 
-  #   if loser_id == 1
+    else
+      losing_player_card.update(player_id: 1)
+    end
+  end
 
-  #     losing_player_card.update(player_id: 2)
-
-  #   else
-  #     losing_player_card.update(player_id: 1)
-  #   end
-  # end
-###### move into front end javascript!!!!!!! #########
 
 
 end

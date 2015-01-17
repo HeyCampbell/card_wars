@@ -1,13 +1,19 @@
-get '/game' do
-  unless session[:game]
-    Card.deal
-    @player = current_user
-    erb :'game/show'
-  end
+get '/' do
+ # p session[:errors]
+  erb :index
 end
 
-post '/game' do
 
-  redirect '/game'
+#Player auth
+
+
+
+
+
+
+
+post '/signout' do
+  session[:player1] = nil
+  session[:player2] = nil
+  redirect ("/")
 end
-
