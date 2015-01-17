@@ -14,5 +14,6 @@ Card.create(value: 12, name: "Queen")
 Card.create(value: 13, name: "King")
 Card.create(value: 14, name: "Ace")
 end
-d = Player.create(name: "Darrin")
-k = Player.create(name: "Kevin")
+Player.create(name: "Darrin", password: "test")
+Player.create(name: "Kevin", password: "test")
+Player.create(name:"Computer", password: "I_am_a_computer")
