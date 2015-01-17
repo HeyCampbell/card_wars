@@ -1,5 +1,6 @@
 
   <% session[:game] = true %>
+
   <script> var player1 = <%= @player.to_json; %>
 
       </script>
@@ -9,19 +10,18 @@
     <%= @player.name %> scores
   </div>
 
-
+<div id="left_card">
 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
   <div class="flipper">
     <div class="front">
-       <div id="left_card">
-          <%= @score %>
+
+
           <p> front </p>
           </div>
 
     </div>
     <div class="back">
-       <div id="right_card">
-          <%= @player.name %>
+          <%=  @player_card.name %>
           <p> back </p>
         </div>
 
