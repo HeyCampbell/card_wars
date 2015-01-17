@@ -2,6 +2,7 @@
   <% session[:game] = true %>
   <% player1 = Player.find(session[:player1]) %>
 
+
 <div id="game_container">
   <div id="left_score">
     <%= player1.name %> scores
@@ -24,7 +25,11 @@
 
     <button type="submit" name="Battle!">Battle!</button>
     </form>
+  </div>
 
+  <form action="/signout" method="POST">
+    <button type="submit" name="Signout">Signout</button>
+  </form>
 
 </div>
 
