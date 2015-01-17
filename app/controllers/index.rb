@@ -1,8 +1,9 @@
 get '/' do
- p session[:errors]
+ # p session[:errors]
   erb :index
 end
 
+<<<<<<< HEAD
 post '/signup' do
   p params[:player]
   @user = Player.new(params[:player])
@@ -25,40 +26,15 @@ post '/signup' do
   end
 
 end
+=======
+>>>>>>> 36bb5ce74d985156ac36aaf59282405d8fb8a1b4
 
-get '/clear_all' do
-  session.clear
-  redirect :'/'
-end
+#Player auth
 
-get '/login' do
-  erb :'auth/login'
-end
 
-get '/signup' do
-  erb :'auth/signup'
-end
 
-post '/login' do
-  p session
-  p params
-  if Player.find_by(name: params[:player][:name])
-    @user = Player.find_by(name: params[:player][:name])
-    if @user.try(:authenticate, params[:player][:password])
-      if session[:player1] == nil
-        session[:player1] = @user.id
-      else session[:player2] == nil
-        session[:player2] = @user.id
-        redirect '/game'
-      end
-    else
-      redirect '/login'
-    end
-    redirect '/signup'
-  end
-  redirect '/'
-end
 
+<<<<<<< HEAD
 get '/game' do
   if request.xhr? # if I received an ajax request
     # return some data
@@ -75,11 +51,10 @@ get '/game' do
     erb :'game/winner'
   end
 end
+=======
+>>>>>>> 36bb5ce74d985156ac36aaf59282405d8fb8a1b4
 
-post '/game' do
 
-  redirect '/game'
-end
 
 post '/signout' do
   session[:player1] = nil
