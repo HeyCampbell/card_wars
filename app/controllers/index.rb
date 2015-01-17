@@ -5,17 +5,25 @@ end
 
 post '/signup' do
   p params[:player]
-  @user = Player.create(params[:player])
-  if session[:player1] == nil
-    session[:player1] = @user.id
-  elsif session[:player2] == nil
-    session[:player2] = @user.id
-  end
-  if session[:player2] == nil
-    redirect '/'
+  @user = Player.new(params[:player])
+  if @user.save
+    if session[:player1] == nil
+      session[:player1] = @user.id
+    elsif session[:player2] == nil
+      session[:player2] = @user.id
+    end
+
+    if session[:player2] == nil
+      redirect '/'
+    else
+      redirect '/game'
+    end
+
   else
-    redirect '/game'
+    add_error('player not valid')
+    redirect '/'
   end
+
 end
 
 get '/clear_all' do
@@ -52,6 +60,12 @@ post '/login' do
 end
 
 get '/game' do
+  if request.xhr? # if I received an ajax request
+    # return some data
+  else # I didn't get an ajax request
+    # do something unrelated to ajax (i.e., javascript was turned off or something)
+  end
+
   unless session[:game]
     Card.deal
   end

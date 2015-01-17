@@ -30,6 +30,12 @@
         <a href="/login">Login</a>
       <% end %>
   </header>
+
+  <div id="error_bar">
+    <%= display_errors! %>
+  </div>
+
+
   <%= yield %>
 </div>
 </body>

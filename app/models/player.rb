@@ -11,22 +11,24 @@ class Player < ActiveRecord::Base
   # end
 
 
-end
-  def self.score!(card1, card2)
-    losing_card = compare_cards(card1, card2)
+# end
 
-    losing_player_card = PlayerCard.find_by(card_id: losing_card.id)
-    loser_id = losing_player_card.player_id
 
-    if loser_id == 1
+  # def self.score!(card1, card2)
+  #   losing_card = compare_cards(card1, card2)
 
-      losing_player_card.update(player_id: 2)
+  #   losing_player_card = PlayerCard.find_by(card_id: losing_card.id)
+  #   loser_id = losing_player_card.player_id
 
-    else
-      losing_player_card.update(player_id: 1)
-    end
-  end
+  #   if loser_id == 1
 
+  #     losing_player_card.update(player_id: 2)
+
+  #   else
+  #     losing_player_card.update(player_id: 1)
+  #   end
+  # end
+###### move into front end javascript!!!!!!! #########
 
 
 end
