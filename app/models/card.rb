@@ -14,4 +14,5 @@ def self.deal
     end
     hands ={player_hand: hand1, computer_hand: hand2}
   end
+
 end
