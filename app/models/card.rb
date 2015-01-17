@@ -1,15 +1,20 @@
 class Card < ActiveRecord::Base
   belongs_to :player_card
 
-  def self.deal(player1, player2)
-    deck = Card.all.shuffle
-    deck.each_with_index do |card, index|
-      if index.odd?
-        player1 << card
-      else
-        player2 << card
-      end
+  def self.deal
+    deck_indices = (0..Card.all.count).to_a
+    hand1 = []
+    hand2 = []
+    until deck_indices.length == 0
+
+      hand1 << deck_indices.shuffle.pop
+      hand2 << deck_indices.shuffle.pop
     end
+    session[:hand1] = hand1
+    session[:hand2] = hand2
   end
+
+
+
 
 end
