@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   has_many :cards, through: :player_cards
   has_secure_password
 
+  validates :name, uniqueness: true
 
   # def self.score!(player1, player2)
   #   losing_card = compare_cards(player1.cards.first, player2.cards.first)
