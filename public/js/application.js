@@ -4,7 +4,9 @@ $(document).ready(function() {
   // when we try to bind to them
   $('#flip_button').on('click', function() {
     event.preventDefault()
-    $.ajax({
+    $("#flip-container").trigger("hover");
+    $("#right_card").trigger("hover");
+    setTimeOut($.ajax({
       // send data to server, could be nothing
       url: '/game',
       type: 'POST',
@@ -18,7 +20,7 @@ $(document).ready(function() {
         complete: function (xhr, status) {
             //$('#showresults').slideDown('slow')
         }
-    });
+    }), 1000);
     }).done(function(response) {
 
       // do stuff with the data that server return
