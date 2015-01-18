@@ -3,21 +3,27 @@ get '/login' do
 end
 
 post '/login' do
-  if Player.find_by(name: params[:player][:name])
-    player = Player.find_by(name: params[:player][:name])
-    if player.try(:authenticate, params[:player][:password])
-      session[:player_id] = player.id
-<<<<<<< HEAD
-      redirect '/game'
-=======
+  # p session
+  # p "*************************"
+  player = Player.find_by(name: params[:player][:name])
 
->>>>>>> e35dfe3692f198e52f825f7fac132cbcb0c9a33a
-    else
-      redirect '/login'
-    end
+  if player.try(:authenticate, params[:player][:password])
+    session[:player_id] = player.id
     redirect '/game'
+  else
+    add_error!("Wrong login information.")
+    redirect '/login'
+
   end
-  redirect '/signup'
+
+
+  #   else
+
+  #     # redirect '/login'
+  #   end
+  #   redirect '/game'
+  # end
+  # redirect '/signup'
 end
 
 get '/signup' do
@@ -25,17 +31,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  @player = Player.create(params[:player])
-  # if session[:player1] == nil
-  #   session[:player1] = @user.id
-  # elsif session[:player2] == nil
-  #   session[:player2] = @user.id
-  # # end
-  # if session[:player2] == nil
-  #   redirect '/'
-  # else
-  #   redirect '/game'
-  # end
+  @player = Player.new(params[:player])
   if @player.save
     session[:player_id] = @player.id
     redirect "/"
