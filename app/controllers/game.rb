@@ -14,10 +14,15 @@ get '/game' do
   erb :'game/show'
 end
 
+get '/game/victory' do
+  erb :'game/victory'
+end
+
+
 get '/game/new' do
   id = session[:player_id]
   session.clear
-
+  session[:player_id] = id
   redirect '/game'
 end
 

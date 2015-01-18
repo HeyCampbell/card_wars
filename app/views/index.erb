@@ -1,6 +1,13 @@
 
 <div id="landing_page">
-  <h1>Welcome to Card Wars!</h1>
+  <div id="welcome">
+    <h1>Welcome to Card Wars!</h1>
+    <h3> Current Leaderboard </h3>
+      <% top_scores.each_with_index do |player, index| %>
+        <h4> <%= index %> : <%= player.name %> <%= player.win_record %> </h4>
+      <% end %>
+  </div>
+
   <div id="user_container">
     <% if current_user %>
       <h4><span>Welcome back, <%= current_user.name %>!</span>
