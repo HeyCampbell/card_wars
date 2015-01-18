@@ -1,35 +1,71 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-  $('#flip_button').on('click', function() {
-    event.preventDefault()
-    $("#flip-container").trigger("hover");
-    $("#right_card").trigger("hover");
-    setTimeOut($.ajax({
-      // send data to server, could be nothing
-      url: '/game',
-      type: 'POST',
-      success: function (data) {
-            var result = $('<div >').append(data).find('#game_container').html();
-            $('#game_container').html(result);
-        },
-        error: function (xhr, status) {
-            alert("Sorry, there was a problem!");
-        },
-        complete: function (xhr, status) {
-            //$('#showresults').slideDown('slow')
-        }
-    }), 1000);
-    }).done(function(response) {
+$(document).ready(function () {
+    $('#flip_button').on('click', function () {
+        event.preventDefault();
+        console.log("flip_click");
+        // $("#flip-container").trigger("hover");
+        // $("#right_card").trigger("hover");
+        $.ajax({
+            url: '/game',
+            type: 'POST',
+            success: function (data) {
+                var result = $('<div >').append(data).find('#game_container').html();
+                $('#game_container').html(result);
+            },
+            error: function (xhr, status) {
+                alert("Sorry, there was a problem!");
+            },
+            complete: function (xhr, status) {
+                //$('#showresults').slideDown('slow')
+            }
+        });
+    });
 
-      // do stuff with the data that server return
-      console.log("HI")
-      console.log(response)
-    })
-  })
 
-});
+
+    $('#login_form_button').on('click', function () {
+        event.preventDefault();
+        console.log("login_click");
+        $.ajax({
+            url: '/login',
+            type: 'GET',
+            success: function (data) {
+                var result = $('<div >').append(data).find('#user_container').html();
+                $('#user_container').html(result);
+                console.log("success");
+            },
+            error: function (xhr, status) {
+                alert("Sorry, there was a problem!");
+            },
+            complete: function (xhr, status) {
+                //$('#showresults').slideDown('slow')
+            }
+        });
+    });
+
+    $('.signup_form_button').on('click', function () {
+        event.preventDefault();
+        $.ajax({
+            // send data to server, could be nothing
+            url: '/signup',
+            type: 'GET',
+            success: function (data) {
+                var result = $('<div >').append(data).find('#user_container').html();
+                $('#user_container').html(result);
+                console.log("success");
+            },
+            error: function (xhr, status) {
+                alert("Sorry, there was a problem!");
+            },
+            complete: function (xhr, status) {
+                //$('#showresults').slideDown('slow')
+            }
+        });
+    });
+  });
+
+
+
+
 
 
 
