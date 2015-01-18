@@ -2,6 +2,14 @@
   <% session[:game] = true %>
   <% player1 = Player.find(session[:player1]) %>
 
+ <script src="javascripts/jquery-1.5.2.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $.post("greeting", { salutation: "Howdy", name: "Friend" },
+          function(result) { $("#greeting").html(result);
+        });
+      });
+    </script>
 
 <div id="game_container">
   <div id="left_score">
