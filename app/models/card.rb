@@ -1,17 +1,14 @@
 class Card < ActiveRecord::Base
   belongs_to :player_card
 
-def self.deal
+  def self.deal
+    deck = (1..self.all.count).to_a.shuffle
     hand1 = []
     hand2 = []
-
-    self.all.each_with_index do |card, index|
-      if index.even?
-        hand1.push(card)
-      else
-        hand2.push(card)
-      end
+    10.times do
+      hand1 << deck.shift
+      hand2 << deck.shift
     end
-    hands ={player_hand: hand1, computer_hand: hand2}
+    [hand1, hand2]
   end
 end

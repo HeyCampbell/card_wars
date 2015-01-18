@@ -3,13 +3,18 @@ get '/login' do
 end
 
 post '/login' do
-  player = Player.find_by(name: params[:player][:name])
+  if Player.find_by(name: params[:player][:name])
+    player = Player.find_by(name: params[:player][:name])
     if player.try(:authenticate, params[:player][:password])
-      session[:player_id] = id
-      redirect '/game'
+
+      session[:player_id] = player.id
+
     else
       redirect '/login'
     end
+    redirect '/game'
+  end
+  redirect '/signup'
 end
 
 get '/signup' do
@@ -17,7 +22,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  @user = Player.create(params[:player])
+  @player = Player.create(params[:player])
   # if session[:player1] == nil
   #   session[:player1] = @user.id
   # elsif session[:player2] == nil
@@ -28,8 +33,8 @@ post '/signup' do
   # else
   #   redirect '/game'
   # end
-  if @user.save
-    session[:player_id] = player.id
+  if @player.save
+    session[:player_id] = @player.id
     redirect "/"
   else
     redirect "/signup"

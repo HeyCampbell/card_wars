@@ -1,0 +1,14 @@
+<div id='victory'>
+  <% if session[:winner] == current_user.id %>
+    <h1>Congratulations, <%= current_user.name %>, You've beaten the computer!</h1>
+
+  <% else %>
+    <h1>Too bad, <%= current_user.name %>, You've been beaten by the computer!</h1>
+  <% end %>
+
+  <h2>Want to <a href='/game/new'>play again?</a><h2>
+
+</div>
+
+
+

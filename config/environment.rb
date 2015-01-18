@@ -19,6 +19,9 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
+require 'pry'
+require 'byebug'
+require 'pry-byebug'
 
 
 # Some helper constants for path-centric logic

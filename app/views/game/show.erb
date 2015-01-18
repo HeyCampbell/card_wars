@@ -1,36 +1,49 @@
 
   <% session[:game] = true %>
-  <% player1 = Player.find(session[:player1]) %>
-
- <script src="javascripts/jquery-1.5.2.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $.post("greeting", { salutation: "Howdy", name: "Friend" },
-          function(result) { $("#greeting").html(result);
-        });
-      });
-    </script>
-
 <div id="game_container">
   <div id="left_score">
-    <%= player1.name %> scores
+    <%= @player.name %>'s' score:
+    <%= session[:player_hand].length %>
   </div>
 
   <div id="left_card">
-    <%= player1.cards.first.name %>
+    <div class="flip-container" onclick="this.classList.toggle('click');">
+      <div class="flipper">
+        <div class="front">
+
+          <p> </p>
+        </div>
+        <div class="back">
+          <%=  @player_card.name %>
+          <p> back </p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div id="right_card">
-     <%= player2.cards.first.name %>
-  </div>
 
   <div id="right_score">
-    <%= player2.name %> scores
+    <p> Computer's Score </p>
+    <%= session[:computer_hand].length %>
+  </div>
+
+    <div id="right_card">
+      <div class="flip-container" onclick="this.classList.toggle('click');">
+        <div class="flipper">
+          <div class="front">
+            <p>  </p>
+          </div>
+
+          <div class="back">
+            <p> <%=  @computer_card.name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="flip_button">
     <form action="/game" method="POST">
-
     <button type="submit" name="Battle!">Battle!</button>
     </form>
   </div>
@@ -40,5 +53,4 @@
   </form>
 
 </div>
-
 
