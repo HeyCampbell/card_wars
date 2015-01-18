@@ -1,4 +1,7 @@
 get '/game' do
+  unless current_user
+    redirect '/login'
+  end
   p session
   unless session[:game]
     hands = Card.deal
@@ -11,10 +14,17 @@ get '/game' do
   erb :'game/show'
 end
 
+get '/game/new' do
+  id = session[:player_id]
+  session.clear
+
+  redirect '/game'
+end
+
 post '/game' do
   score
-  if session[:winner]
-    redirect '/victory'
+  if winner?
+    redirect '/game/victory'
   end
   redirect '/game'
 end

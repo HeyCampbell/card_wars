@@ -1,22 +1,17 @@
 
   <% session[:game] = true %>
-
-  <script> var player1 = <%= @player.to_json; %>
-
-      </script>
-
 <div id="game_container">
   <div id="left_score">
-    <%= @player.name %> score:
+    <%= @player.name %>'s' score:
     <%= session[:player_hand].length %>
-
   </div>
 
   <div id="left_card">
-    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+    <div class="flip-container" onclick="this.classList.toggle('click');">
       <div class="flipper">
         <div class="front">
-          <p> <%=  @player_card.name %> </p>
+
+          <p> </p>
         </div>
         <div class="back">
           <%=  @player_card.name %>
@@ -33,20 +28,19 @@
   </div>
 
     <div id="right_card">
-      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flip-container" onclick="this.classList.toggle('click');">
         <div class="flipper">
           <div class="front">
-          <p> <%=  @computer_card.name %> </p>
+            <p>  </p>
           </div>
-        </div>
-      <div class="back">
-          <%=  @player_card.name %>
-          <p> back </p>
+
+          <div class="back">
+            <p> <%=  @computer_card.name %></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <div id="flip_button">
     <form action="/game" method="POST">
@@ -59,3 +53,4 @@
   </form>
 
 </div>
+
