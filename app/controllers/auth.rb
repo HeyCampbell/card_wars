@@ -6,6 +6,7 @@ post '/login' do
   if Player.find_by(name: params[:player][:name])
     player = Player.find_by(name: params[:player][:name])
     if player.try(:authenticate, params[:player][:password])
+
       session[:player_id] = player.id
 
     else
