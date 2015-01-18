@@ -5,7 +5,7 @@ class Card < ActiveRecord::Base
     deck = (1..self.all.count).to_a.shuffle
     hand1 = []
     hand2 = []
-    10.times do
+    5.times do
       hand1 << deck.shift
       hand2 << deck.shift
     end
