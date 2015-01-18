@@ -32,8 +32,8 @@ post '/signup' do
   # else
   #   redirect '/game'
   # end
-  if @user.save
-    session[:player_id] = @user.id
+  if @player.save
+    session[:player_id] = @player.id
     redirect "/"
   else
     redirect "/signup"

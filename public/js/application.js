@@ -7,8 +7,20 @@ $(document).ready(function() {
     $.ajax({
       // send data to server, could be nothing
       url: '/game',
-      type: 'GET'
+      type: 'POST',
+      success: function (data) {
+            var result = $('<div >').append(data).find('#game_container').html();
+            $('#game_container').html(result);
+        },
+        error: function (xhr, status) {
+            alert("Sorry, there was a problem!");
+        },
+        complete: function (xhr, status) {
+            //$('#showresults').slideDown('slow')
+        }
+    });
     }).done(function(response) {
+
       // do stuff with the data that server return
       console.log("HI")
       console.log(response)

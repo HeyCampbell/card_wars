@@ -1,4 +1,5 @@
 get '/game' do
+  p session
   unless session[:game]
     hands = Card.deal
     session[:player_hand] = hands.first
