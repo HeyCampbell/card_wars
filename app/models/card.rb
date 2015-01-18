@@ -16,5 +16,6 @@ def self.deal
     hand1.map! {|card| card.id}
     hand2.map! {|card| card.id}
     [hand1, hand2]
+
   end
 end

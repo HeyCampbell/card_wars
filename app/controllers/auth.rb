@@ -21,7 +21,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  @user = Player.create(params[:player])
+  @player = Player.create(params[:player])
   # if session[:player1] == nil
   #   session[:player1] = @user.id
   # elsif session[:player2] == nil
