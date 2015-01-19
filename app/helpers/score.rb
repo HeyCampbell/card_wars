@@ -47,17 +47,21 @@ end
 def winner?
 
   if session[:computer_hand].length == 0
-    binding.pry
+    # binding.pry
     session[:winner] = 'Computer'
     erb :'/game/victory'
     return true
   elsif session[:player_hand].length == 0
-    binding.pry
+    # binding.pry
     current_user.increment!(:win_record, 1)
     session[:winner] = session[:player_id]
     erb :'/game/victory'
     return true
   end
+end
+
+def top_scores
+  Player.order(win_record: :desc).limit(3)
 end
 
 

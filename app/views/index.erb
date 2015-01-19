@@ -1,11 +1,19 @@
 
 <div id="landing_page">
   <div id="welcome">
-    <h1>Welcome to Card Wars!</h1>
+    <div id="logo">
+      <img src="/img/CardWars.png">
+    </div>
+    <div id="logo_fan">
+      <img src="/img/cardAlpha.png">
+    </div>
+    <h1>The Game of Card Domination</h1>
+    <div id="leaderboard">
     <h3> Current Leaderboard </h3>
       <% top_scores.each_with_index do |player, index| %>
-        <h4> <%= index %> : <%= player.name %> <%= player.win_record %> </h4>
+        <h4> <%= index+1 %> : <%= player.name %>  -  Wins: <%= player.win_record %> </h4>
       <% end %>
+    </div>
   </div>
 
   <div id="user_container">
@@ -28,7 +36,7 @@
     <% end %>
   </div>
 
-
-<a href="/login">Login Here</a> | <a href="/signup">First time?</a>
-
+  <div id="footsignup">
+    <a href="/login">Login Here</a> | <a href="/signup">First time?</a>
+  </div>
 </div>

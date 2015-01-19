@@ -40,36 +40,28 @@ div#login-toolbar {
 }
 
 button {
-    border: 5px double papayawhip;
-    border-radius: 132px;
-    background: darkgreen;
-    width: 175px;
-    height: 175px;
+    border: 2px solid;
+    border-radius: 25px;
 }
 
 div#login_form_button {
-    position: relative;
+    position: absolute;
     margin-top: 15px;
     /* margin-right: 25%; */
-    width: 10%;
+    width: 20%;
     position: absolute;
-    left: 20%;
+    left: 0;
     right: 0;
     margin-left: auto;
-    margin-right: auto;
-    color: papayawhip;
-    font-size: 2em;
-    font-variant: small-caps;
+    margin-right: 30%;
 }
 div#signup_form_button {
-    width: 10%;
     position: absolute;
-    left: 20%;
-    right: 0px;
-    /* margin-left: auto; */
-    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: 19%;
     margin-top: 15px;
-    color: papayawhip; font-size: 2em; font-variant: small-caps;
 }
 div#logo {
     z-index: 3;
@@ -80,8 +72,7 @@ div#logo {
 div#leaderboard {
     margin-left: 20%;
     padding-left: 59px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
     text-align: left;
     font-size: .8em;
     background-color: darkgreen;
@@ -101,14 +92,10 @@ div#logo_fan {
     top: -20px;
 }
 div#login_form {
-    width: 300px;
     position: relative;
-    top: 71%;
-    border-radius: 25px;
-    /* text-align: right; */
-    /* margin-right: 40%; */
-    left: 36%;
-    background-color: darkgreen;
+    top: 200px;
+    text-align: right;
+    margin-right: 30%;
 }
 
 div#signup_form {
@@ -170,21 +157,18 @@ code {
 
 
 #left_score {
-    float: left;
-    position: absolute;
-    color: papayawhip;
-    left-margin: 10%;
-    top: 65px;
-    left: 10%;
+    position: relative;
+    left-margin: 10px;
+    top: 20px;
+    left:20px;
     text-align: left;
 }
 
 #right_score {
     position: absolute;
-    color: papayawhip;
     right-margin: 9px;
-    top: 57px;
-    right: 10%;
+    top: 20px;
+    right: 22px;
 }
 
 #right_card {
@@ -220,9 +204,8 @@ top: 15%;
 
 #flip_button {
 position: absolute;
-margin: auto;
-bottom: 48%;
-left: 43%;
+right: 50%;
+bottom: 20%;
 }
 
 /* entire container, keeps perspective */
