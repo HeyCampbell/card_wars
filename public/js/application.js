@@ -1,6 +1,15 @@
 $(document).ready(function () {
+    $('#flip_button').on('mouseover', function () {
+    $('.flip-container').addClass('hover')
+      });
+
+    $('#flip_button').on('mouseout', function () {
+    $('.flip-container').removeClass('hover')
+      });
+
     $('#flip_button').on('click', function () {
         event.preventDefault();
+
         console.log("flip_click");
         // $("#flip-container").trigger("hover");
         // $("#right_card").trigger("hover");
@@ -42,7 +51,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.signup_form_button').on('click', function () {
+    $('#signup_form_button').on('click', function () {
         event.preventDefault();
         $.ajax({
             // send data to server, could be nothing

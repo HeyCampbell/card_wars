@@ -14,8 +14,8 @@
           <p> </p>
         </div>
         <div class="back">
-          <%=  @player_card.name %>
-          <p> back </p>
+          <img src='/img/<%=  @player_card.name %>.jpg'>
+          <p>  </p>
         </div>
       </div>
     </div>
@@ -23,8 +23,7 @@
 
 
   <div id="right_score">
-    <p> Computer's Score </p>
-    <%= session[:computer_hand].length %>
+    <p> Computer's Score : <%= session[:computer_hand].length %> </p>
   </div>
 
     <div id="right_card">
@@ -35,12 +34,12 @@
           </div>
 
           <div class="back">
-            <p> <%=  @computer_card.name %></p>
+            <img src='/img/<%=  @computer_card.name %>.jpg'>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
 
   <div id="flip_button">
     <form action="/game" method="POST">
@@ -48,9 +47,8 @@
     </form>
   </div>
 
-  <form action="/signout" method="POST">
-    <button type="submit" name="Signout">Signout</button>
-  </form>
+ </div>
+
 
 </div>
 
