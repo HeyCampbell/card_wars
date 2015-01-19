@@ -23,8 +23,7 @@
 
 
   <div id="right_score">
-    <p> Computer's Score </p>
-    <%= session[:computer_hand].length %>
+    <p> Computer's Score : <%= session[:computer_hand].length %> </p>
   </div>
 
     <div id="right_card">
@@ -40,7 +39,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 
   <div id="flip_button">
     <form action="/game" method="POST">
@@ -48,9 +47,8 @@
     </form>
   </div>
 
-  <form action="/signout" method="POST">
-    <button type="submit" name="Signout">Signout</button>
-  </form>
+ </div>
+
 
 </div>
 

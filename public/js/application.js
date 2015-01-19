@@ -42,7 +42,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.signup_form_button').on('click', function () {
+    $('#signup_form_button').on('click', function () {
         event.preventDefault();
         $.ajax({
             // send data to server, could be nothing
