@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    $('#flip_button').on('mouseover', function () {
+    $('#game_container').on('mouseover', '#flip_button', function () {
     $('.flip-container').addClass('hover')
       });
 
-    $('#flip_button').on('mouseout', function () {
+    $('#game_container').on('mouseout', '#flip_button', function () {
     $('.flip-container').removeClass('hover')
       });
 
-    $('#flip_button').on('click', function () {
+    $('#game_container').on('click', '#flip_button', function () {
         event.preventDefault();
 
         console.log("flip_click");
