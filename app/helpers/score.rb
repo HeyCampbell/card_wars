@@ -48,13 +48,13 @@ def winner?
 
   if session[:computer_hand].length == 0
     # binding.pry
-    session[:winner] = 'Computer'
+    current_user.increment!(:win_record, 1)
+    session[:winner] = session[:player_id]
     erb :'/game/victory'
     return true
   elsif session[:player_hand].length == 0
     # binding.pry
-    current_user.increment!(:win_record, 1)
-    session[:winner] = session[:player_id]
+    session[:winner] = 'Computer'
     erb :'/game/victory'
     return true
   end
